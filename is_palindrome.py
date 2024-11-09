@@ -1,8 +1,11 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        new_s = ''
+        #reverse string after only keeping alph/num
+        output = ''
         for char in s: 
             if char.isalnum(): 
-                new_s += char
+                output += char.lower()
+        return output == output[::-1]
 
-    return false
+        
+        
