@@ -1,20 +1,27 @@
 class MinStack:
+    #two stack method, min stack and stack
+    #top of min stack always holds the smallest value
 
     def __init__(self):
         self.stack = []
-        self.small = []
+        self.minStack = []
+        
 
     def push(self, val: int) -> None:
         self.stack.append(val)
-        val = min(val, self.small[-1] if self.small else val)
-        self.small.append(val)
+        if self.minStack: self.minStack.append(min(self.minStack[-1], val))
+        else: self.minStack.append(val)
 
     def pop(self) -> None:
         self.stack.pop()
-        self.small.pop()
+        self.minStack.pop()
+        
 
     def top(self) -> int:
         return self.stack[-1]
+        
 
     def getMin(self) -> int:
-        return self.small[-1]
+        return self.minStack[-1]
+
+        
